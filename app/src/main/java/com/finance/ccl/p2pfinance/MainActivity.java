@@ -1,6 +1,6 @@
 package com.finance.ccl.p2pfinance;
 
-import android.app.Activity;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -14,42 +14,43 @@ import android.widget.TextView;
 import com.finance.ccl.p2pfinance.fragment.HomeFragment;
 import com.finance.ccl.p2pfinance.fragment.MeFragment;
 import com.finance.ccl.p2pfinance.fragment.MoreFragment;
-import com.finance.ccl.p2pfinance.fragment.TouziFragment;
+import com.finance.ccl.p2pfinance.fragment.TouZiFragment;
+import com.finance.ccl.p2pfinance.utils.LogUtils;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MainActivity extends FragmentActivity {
 
-    @InjectView(R.id.content)
+public class MainActivity extends FragmentActivity {
+    @BindView(R.id.content)
     FrameLayout content;
-    @InjectView(R.id.iv_home)
+    @BindView(R.id.iv_home)
     ImageView ivHome;
-    @InjectView(R.id.tv_home)
+    @BindView(R.id.tv_home)
     TextView tvHome;
-    @InjectView(R.id.ll_home)
+    @BindView(R.id.ll_home)
     LinearLayout llHome;
-    @InjectView(R.id.iv_touzi)
+    @BindView(R.id.iv_touzi)
     ImageView ivTouzi;
-    @InjectView(R.id.tv_touzi)
+    @BindView(R.id.tv_touzi)
     TextView tvTouzi;
-    @InjectView(R.id.ll_touzi)
+    @BindView(R.id.ll_touzi)
     LinearLayout llTouzi;
-    @InjectView(R.id.iv_me)
+    @BindView(R.id.iv_me)
     ImageView ivMe;
-    @InjectView(R.id.tv_me)
+    @BindView(R.id.tv_me)
     TextView tvMe;
-    @InjectView(R.id.ll_me)
+    @BindView(R.id.ll_me)
     LinearLayout llMe;
-    @InjectView(R.id.iv_more)
+    @BindView(R.id.iv_more)
     ImageView ivMore;
-    @InjectView(R.id.tv_more)
+    @BindView(R.id.tv_more)
     TextView tvMore;
-    @InjectView(R.id.ll_more)
+    @BindView(R.id.ll_more)
     LinearLayout llMore;
     private HomeFragment homeFragment;
-    private TouziFragment touziFragment;
+    private TouZiFragment touziFragment;
     private MeFragment meFragment;
     private MoreFragment moreFragment;
     private FragmentTransaction ft;
@@ -58,12 +59,14 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
+        LogUtils.logshow("onCreate",getClass());
     }
 
-    @OnClick({R.id.ll_home,R.id.ll_touzi,R.id.ll_me,R.id.ll_more})
-    public void  changeTab(View view){
-        switch (view.getId()){
+    @OnClick({R.id.ll_home, R.id.ll_touzi, R.id.ll_me, R.id.ll_more})
+    public void changeTab(View view) {
+        LogUtils.logshow("changeTab",getClass());
+        switch (view.getId()) {
             case R.id.ll_home:
                 setSelect(0);
                 break;
@@ -97,7 +100,7 @@ public class MainActivity extends FragmentActivity {
             case 1:
                 //投资
                 if (touziFragment == null) {
-                    touziFragment = new TouziFragment();
+                    touziFragment = new TouZiFragment();
                     ft.add(R.id.content, touziFragment);
                 }
                 ft.show(touziFragment);
@@ -125,7 +128,7 @@ public class MainActivity extends FragmentActivity {
 
     private void hideFragment() {
         if (homeFragment != null) {
-           ft.hide(homeFragment);
+            ft.hide(homeFragment);
         }
 
         if (touziFragment != null) {

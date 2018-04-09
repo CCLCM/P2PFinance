@@ -13,7 +13,7 @@ import com.finance.ccl.p2pfinance.R;
  * Created by ccl on 18-4-9.
  */
 
-public class TouziFragment extends Fragment {
+public class TouZiFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
