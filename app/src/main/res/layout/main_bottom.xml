@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:background="?android:listDivider"
+        android:layout_height="1dp">
+    </View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        >
+        <!--首页-B  -->
+        <LinearLayout
+            android:id="@+id/ll_home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+        <ImageView
+            android:id="@+id/iv_home"
+            android:src="@drawable/bid02"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_home"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_main_main"
+                android:textSize="14sp"
+                android:textColor="@color/home_back_unselected"/>
+
+        </LinearLayout>
+
+        <!--首页-E -->
+
+        <!--我要投资-B  -->
+
+        <LinearLayout
+            android:id="@+id/ll_touzi"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/iv_touzi"
+                android:src="@drawable/bid04"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_touzi"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_main_touzi"
+                android:textSize="14sp"
+                android:textColor="@color/home_back_unselected"/>
+
+
+        </LinearLayout>
+        <!--我要投资-E  -->
+
+        <!--我的资产-B  -->
+
+        <LinearLayout
+            android:id="@+id/ll_me"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/iv_me"
+                android:src="@drawable/bid06"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_me"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_main_me"
+                android:textSize="14sp"
+                android:textColor="@color/home_back_unselected"/>
+
+        </LinearLayout>
+        <!--我的资产-E  -->
+
+        <!--更多-B  -->
+
+        <LinearLayout
+            android:id="@+id/ll_more"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <ImageView
+                android:id="@+id/iv_more"
+                android:src="@drawable/bid08"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_more"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_main_more"
+                android:textSize="14sp"
+                android:textColor="@color/home_back_unselected"/>
+
+        </LinearLayout>
+
+        <!--更多-E  -->
+
+
+    </LinearLayout>
+
+</LinearLayout>
