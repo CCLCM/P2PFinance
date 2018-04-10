@@ -16,6 +16,7 @@ import com.finance.ccl.p2pfinance.fragment.MeFragment;
 import com.finance.ccl.p2pfinance.fragment.MoreFragment;
 import com.finance.ccl.p2pfinance.fragment.TouZiFragment;
 import com.finance.ccl.p2pfinance.utils.LogUtils;
+import com.finance.ccl.p2pfinance.utils.UIutils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -102,7 +103,7 @@ public class MainActivity extends FragmentActivity {
                     ft.add(R.id.content, homeFragment);
                 }
                 ivHome.setImageResource(R.drawable.bid01);
-                tvHome.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvHome.setTextColor(UIutils.getColor(R.color.home_back_selected));
                 ft.show(homeFragment);
                 break;
             case 1:
@@ -112,7 +113,7 @@ public class MainActivity extends FragmentActivity {
                     ft.add(R.id.content, touziFragment);
                 }
                 ivTouzi.setImageResource(R.drawable.bid03);
-                tvTouzi.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvTouzi.setTextColor(UIutils.getColor(R.color.home_back_selected));
                 ft.show(touziFragment);
                 break;
             case 2:
@@ -122,7 +123,7 @@ public class MainActivity extends FragmentActivity {
                     ft.add(R.id.content, meFragment);
                 }
                 ivMe.setImageResource(R.drawable.bid05);
-                tvMe.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMe.setTextColor(UIutils.getColor(R.color.home_back_selected));
                 ft.show(meFragment);
                 break;
             case 3:
@@ -132,7 +133,7 @@ public class MainActivity extends FragmentActivity {
                     ft.add(R.id.content, moreFragment);
                 }
                 ivMore.setImageResource(R.drawable.bid07);
-                tvMore.setTextColor(getResources().getColor(R.color.home_back_selected));
+                tvMore.setTextColor(UIutils.getColor(R.color.home_back_selected));
                 ft.show(moreFragment);
                 break;
             default:
@@ -145,10 +146,10 @@ public class MainActivity extends FragmentActivity {
         ivTouzi.setImageResource(R.drawable.bid04);
         ivMe.setImageResource(R.drawable.bid06);
         ivMore.setImageResource(R.drawable.bid08);
-        tvHome.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvTouzi.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMe.setTextColor(getResources().getColor(R.color.home_back_unselected));
-        tvMore.setTextColor(getResources().getColor(R.color.home_back_unselected));
+        tvHome.setTextColor(UIutils.getColor(R.color.home_back_unselected));
+        tvTouzi.setTextColor(UIutils.getColor(R.color.home_back_unselected));
+        tvMe.setTextColor(UIutils.getColor(R.color.home_back_unselected));
+        tvMore.setTextColor(UIutils.getColor(R.color.home_back_unselected));
     }
 
     private void hideFragment() {

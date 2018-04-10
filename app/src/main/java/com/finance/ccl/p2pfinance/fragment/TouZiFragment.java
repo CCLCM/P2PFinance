@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.finance.ccl.p2pfinance.R;
+import com.finance.ccl.p2pfinance.utils.UIutils;
 
 /**
  * Created by ccl on 18-4-9.
@@ -22,7 +23,7 @@ public class TouZiFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(container.getContext(), R.layout.fragment_touzi,null);
+        View view = UIutils.getXmlView(R.layout.fragment_touzi);
         return view;
     }
 }

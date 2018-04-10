@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.finance.ccl.p2pfinance.R;
+import com.finance.ccl.p2pfinance.utils.UIutils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +37,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(container.getContext(), R.layout.fragment_home, null);
+        View view = UIutils.getXmlView(R.layout.fragment_home);
         unbinder = ButterKnife.bind(this, view);
         initTitle();
         return view;
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
     private void initTitle() {
     titleLeft.setVisibility(View.INVISIBLE);
     titleRight.setVisibility(View.INVISIBLE);
-    titleTv.setText("首页");
+    titleTv.setText((R.string.tv_main_main));
     }
 
     @Override
