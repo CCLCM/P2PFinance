@@ -6,14 +6,28 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.finance.ccl.p2pfinance.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by ccl on 18-4-9.
  */
 
 public class HomeFragment extends Fragment {
+    @BindView(R.id.title_left)
+    ImageView titleLeft;
+    @BindView(R.id.title_tv)
+    TextView titleTv;
+    @BindView(R.id.title_right)
+    ImageView titleRight;
+    Unbinder unbinder;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +36,21 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = View.inflate(container.getContext(), R.layout.fragment_home,null);
+        View view = View.inflate(container.getContext(), R.layout.fragment_home, null);
+        unbinder = ButterKnife.bind(this, view);
+        initTitle();
         return view;
+    }
+
+    private void initTitle() {
+    titleLeft.setVisibility(View.INVISIBLE);
+    titleRight.setVisibility(View.INVISIBLE);
+    titleTv.setText("首页");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }
