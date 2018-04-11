@@ -14,6 +14,22 @@ import com.finance.ccl.p2pfinance.common.MyApplication;
 
 public class UIutils {
 
+    public static String[] getStringArray(int arrayId){
+        return getContext().getResources().getStringArray(arrayId);
+    }
+
+
+    public static int dp2px(int dp) {
+        float density = getContext().getResources().getDisplayMetrics().density;
+        return (int) (density*dp + 0.5);
+
+    }
+
+    public static int px2dp(int px) {
+        float density = getContext().getResources().getDisplayMetrics().density;
+        return (int) (px/density + 0.5);
+    }
+
     public static int getColor(int colorId){
         return getContext().getResources().getColor(colorId);
     }
