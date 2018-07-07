@@ -66,6 +66,11 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initData() {
+        String str = null;
+        if (str.equals("")){
+
+        }
+
         setSelect(0);
     }
 

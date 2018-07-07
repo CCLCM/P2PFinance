@@ -7,7 +7,7 @@ package com.finance.ccl.p2pfinance.common;
  */
 
 public class AppNetConfig {
-    public static final String HOST = "192.168.56.1";    //http://ip:8080/p2p
+    public static final String HOST = "192.168.56.1";
 
     public static final String BASEURL = "http://"+HOST+":8080/P2PInvest/";
 
