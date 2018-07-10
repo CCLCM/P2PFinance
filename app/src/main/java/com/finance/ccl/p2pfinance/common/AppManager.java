@@ -17,7 +17,7 @@ public class AppManager {
 
     public static AppManager appManager = null;
     private AppManager(){}
-    public static AppManager getAppManager(){
+    public static AppManager getInstance(){
         if (appManager == null) {
             appManager = new AppManager();
         }
