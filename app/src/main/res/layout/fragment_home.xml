@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     >
     <include layout="@layout/common_top"></include>
+<com.finance.ccl.p2pfinance.ui.MyScrollView
+    android:id="@+id/myscroolview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <TextView
         android:textSize="40sp"
@@ -13,5 +21,111 @@
         android:layout_height="wrap_content"
         android:text="主页"
         />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+
+    <TextView
+        android:textSize="40sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="主页"
+        />
+    </LinearLayout>
+</com.finance.ccl.p2pfinance.ui.MyScrollView>
 
 </LinearLayout>
