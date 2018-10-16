@@ -11,11 +11,11 @@ public class AppNetConfig {
 
     public static final String BASEURL = "http://"+HOST+":8080/P2PInvest/";
 
-    public static final String login = BASEURL+"login";
+    public static final String LOGIN = BASEURL+"login";
 
-    public static final String product = BASEURL+"product";
+    public static final String PRODUCT = BASEURL+"product";
 
-    public static final String index = BASEURL+"index";
+    public static final String INDEX = BASEURL+"index";
 
     //..............................................
 }
