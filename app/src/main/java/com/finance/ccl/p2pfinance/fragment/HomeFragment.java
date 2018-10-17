@@ -21,6 +21,7 @@ import com.finance.ccl.p2pfinance.bean.Index;
 import com.finance.ccl.p2pfinance.bean.Product;
 import com.finance.ccl.p2pfinance.common.AppNetConfig;
 import com.finance.ccl.p2pfinance.ui.MyScrollView;
+import com.finance.ccl.p2pfinance.ui.RoundProgress;
 import com.finance.ccl.p2pfinance.utils.UIutils;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -38,20 +39,24 @@ import butterknife.Unbinder;
  */
 
 public class HomeFragment extends Fragment {
+
+
     AsyncHttpClient client = new AsyncHttpClient();
+    Unbinder unbinder;
     @BindView(R.id.title_left)
     ImageView titleLeft;
     @BindView(R.id.title_tv)
     TextView titleTv;
     @BindView(R.id.title_right)
     ImageView titleRight;
-    Unbinder unbinder;
     @BindView(R.id.vp_barner)
     ViewPager vpBarner;
     @BindView(R.id.circle_barner)
     CirclePageIndicator circleBarner;
     @BindView(R.id.textView1)
     TextView textView1;
+    @BindView(R.id.p_progresss)
+    RoundProgress pProgresss;
     @BindView(R.id.p_yearlv)
     TextView pYearlv;
     @BindView(R.id.button1)
@@ -78,7 +83,7 @@ public class HomeFragment extends Fragment {
     private void initData() {
         mIndex = new Index();
 
-        client.post(AppNetConfig.INDEX,new AsyncHttpResponseHandler(){
+        client.post(AppNetConfig.INDEX, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(String content) {
                 //super.onSuccess(content);
@@ -88,7 +93,7 @@ public class HomeFragment extends Fragment {
 
                 String imageArr = jsonObject.getString("imageArr");
                 List<Image> imageList = JSON.parseArray(imageArr, Image.class);
-                mIndex.imageList =imageList;
+                mIndex.imageList = imageList;
                 mIndex.product = product;
                 //适配数据
                 vpBarner.setAdapter(new MyAdapter());
@@ -96,19 +101,36 @@ public class HomeFragment extends Fragment {
                 //ViewPager 交给指示器
 
                 circleBarner.setViewPager(vpBarner);
+                totalProgress = Integer.parseInt(mIndex.product.progress);
+                new Thread(runnable).start();
 
             }
 
             @Override
             public void onFailure(Throwable error, String content) {
 //                super.onFailure(error, content);
-                Toast.makeText(getActivity(),"请求服务器失败",Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), "请求服务器失败", Toast.LENGTH_LONG).show();
             }
 
         });
     }
 
-
+    private int totalProgress;
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int tempProgress = 0;
+            try {
+                while (tempProgress <= totalProgress) {
+                    pProgresss.setProgress(tempProgress);
+                    tempProgress++;
+                    Thread.sleep(15);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    };
 
     private void initTitle() {
         titleLeft.setVisibility(View.INVISIBLE);
@@ -125,7 +147,7 @@ public class HomeFragment extends Fragment {
     private class MyAdapter extends PagerAdapter {
         @Override
         public int getCount() {
-            return mIndex.imageList == null ? 0: mIndex.imageList.size();
+            return mIndex.imageList == null ? 0 : mIndex.imageList.size();
         }
 
         @Override

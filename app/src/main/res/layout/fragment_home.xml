@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
@@ -98,18 +100,18 @@
             android:layout_marginTop="10dp"
             android:gravity="center">
 
-            <!--#18b4ed-->
+
             <!-- 圆环进度-->
-    <!--        <cn.itcast.wh.p2pmoney12.ui.RoundProgress
-                android:id="@+id/p_progresss"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+            <com.finance.ccl.p2pfinance.ui.RoundProgress
                 app:roundColor="@android:color/darker_gray"
                 app:roundProgressColor="@android:color/holo_red_dark"
                 app:roundWidth="10dp"
                 app:textColor="#18b4ed"
-                app:textSize="20sp">
-            </cn.itcast.wh.p2pmoney12.ui.RoundProgress>-->
+                app:textSize="20sp"
+                android:id="@+id/p_progresss"
+                android:layout_width="120dp"
+                android:layout_height="120dp">
+            </com.finance.ccl.p2pfinance.ui.RoundProgress>
         </RelativeLayout>
 
         <LinearLayout
