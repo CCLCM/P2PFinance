@@ -8,22 +8,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.finance.ccl.p2pfinance.R;
+import com.finance.ccl.p2pfinance.common.AppNetConfig;
+import com.finance.ccl.p2pfinance.common.BaseFragment;
 import com.finance.ccl.p2pfinance.utils.UIutils;
+import com.loopj.android.http.RequestParams;
 
 /**
  * Created by ccl on 18-4-9.
  */
 
-public class TouZiFragment extends Fragment {
+public class TouZiFragment extends BaseFragment {
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected RequestParams getParams() {
+        return null;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = UIutils.getXmlView(R.layout.fragment_touzi);
-        return view;
+    public String getUrl() {
+        return AppNetConfig.INDEX;
+    }
+
+    @Override
+    public void initData(String resultState) {
+
+    }
+
+    @Override
+    public void initTitle() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_touzi;
     }
 }

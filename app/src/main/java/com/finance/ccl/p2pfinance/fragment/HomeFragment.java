@@ -1,17 +1,13 @@
 package com.finance.ccl.p2pfinance.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -20,29 +16,27 @@ import com.finance.ccl.p2pfinance.bean.Image;
 import com.finance.ccl.p2pfinance.bean.Index;
 import com.finance.ccl.p2pfinance.bean.Product;
 import com.finance.ccl.p2pfinance.common.AppNetConfig;
+import com.finance.ccl.p2pfinance.common.BaseFragment;
 import com.finance.ccl.p2pfinance.ui.MyScrollView;
 import com.finance.ccl.p2pfinance.ui.RoundProgress;
-import com.finance.ccl.p2pfinance.utils.UIutils;
 import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.squareup.picasso.Picasso;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by ccl on 18-4-9.
  */
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
 
     AsyncHttpClient client = new AsyncHttpClient();
-    Unbinder unbinder;
+
     @BindView(R.id.title_left)
     ImageView titleLeft;
     @BindView(R.id.title_tv)
@@ -65,54 +59,35 @@ public class HomeFragment extends Fragment {
     MyScrollView myscrollview;
     private Index mIndex;
 
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected RequestParams getParams() {
+        return null;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = UIutils.getXmlView(R.layout.fragment_home);
-        unbinder = ButterKnife.bind(this, view);
-        initTitle();
-        initData();
-        return view;
+    public String getUrl() {
+        return AppNetConfig.INDEX;
     }
 
-    private void initData() {
+    @Override
+    public void initData(String resultState) {
+        if (TextUtils.isEmpty(resultState)) {
+            return;
+        }
         mIndex = new Index();
+        JSONObject jsonObject = JSON.parseObject(resultState);
+        String proInfo = jsonObject.getString("proInfo");
+        Product product = JSON.parseObject(proInfo, Product.class);
+        String imageArr = jsonObject.getString("imageArr");
+        List<Image> imageList = JSON.parseArray(imageArr, Image.class);mIndex.imageList = imageList;
+        mIndex.product = product;
+        //适配数据
+        vpBarner.setAdapter(new MyAdapter());
+        circleBarner.setViewPager(vpBarner);
+        totalProgress = Integer.parseInt(mIndex.product.progress);
+        new Thread(runnable).start();
 
-        client.post(AppNetConfig.INDEX, new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(String content) {
-                //super.onSuccess(content);
-                JSONObject jsonObject = JSON.parseObject(content);
-                String proInfo = jsonObject.getString("proInfo");
-                Product product = JSON.parseObject(proInfo, Product.class);
-
-                String imageArr = jsonObject.getString("imageArr");
-                List<Image> imageList = JSON.parseArray(imageArr, Image.class);
-                mIndex.imageList = imageList;
-                mIndex.product = product;
-                //适配数据
-                vpBarner.setAdapter(new MyAdapter());
-
-                //ViewPager 交给指示器
-
-                circleBarner.setViewPager(vpBarner);
-                totalProgress = Integer.parseInt(mIndex.product.progress);
-                new Thread(runnable).start();
-
-            }
-
-            @Override
-            public void onFailure(Throwable error, String content) {
-//                super.onFailure(error, content);
-                Toast.makeText(getActivity(), "请求服务器失败", Toast.LENGTH_LONG).show();
-            }
-
-        });
     }
 
     private int totalProgress;
@@ -132,17 +107,18 @@ public class HomeFragment extends Fragment {
         }
     };
 
-    private void initTitle() {
+    @Override
+    public void initTitle() {
         titleLeft.setVisibility(View.INVISIBLE);
         titleRight.setVisibility(View.INVISIBLE);
         titleTv.setText((R.string.tv_main_main));
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+    public int getLayoutId() {
+        return R.layout.fragment_home;
     }
+
 
     private class MyAdapter extends PagerAdapter {
         @Override

@@ -50,6 +50,26 @@ public class UIutils {
         return context.getResources().getColor(colorId);
     }*/
 
+    /**
+     * 保证rnnnable 保险证在主线程中的
+     * @param runnable
+     */
+    public static  void runOnUIThread(Runnable runnable) {
+        if (isInMainThread()){
+            runnable.run();
+        } else {
+           getHandler().post(runnable);
+        }
+    }
+
+    private static boolean isInMainThread() {
+        //当前线程的id
+        int tid = android.os.Process.myTid();
+        if (tid == MyApplication.mainThreadId) {
+            return true;
+        }
+        return false;
+    }
 
 
 }
