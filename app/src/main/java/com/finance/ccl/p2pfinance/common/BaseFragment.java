@@ -16,34 +16,35 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment {
     Unbinder unbinder;
+    private LoadingPage loadingPage;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       LoadingPage loadingPage = new LoadingPage(container.getContext()){
-           @Override
-           public int layoutId() {
-               return getLayoutId();
-           }
+        loadingPage = new LoadingPage(container.getContext()){
+            @Override
+            public int layoutId() {
+                return getLayoutId();
+            }
 
-           @Override
-           protected void OnSuccess(LoadingPage.ResultState resultState,View view) {
-              unbinder = ButterKnife.bind(BaseFragment.this, view);
-                    initTitle();
-                    initData(resultState.getContent());
-           }
+            @Override
+            protected void OnSuccess(ResultState resultState,View view) {
+               unbinder = ButterKnife.bind(BaseFragment.this, view);
+                     initTitle();
+                     initData(resultState.getContent());
+            }
 
-           @Override
-           protected RequestParams params() {
-               return getParams();
-           }
+            @Override
+            protected RequestParams params() {
+                return getParams();
+            }
 
-           @Override
-           protected String url() {
-               return getUrl();
-           }
+            @Override
+            protected String url() {
+                return getUrl();
+            }
 
-       };
-        loadingPage.show();
+        };
         return loadingPage;
 
     }
@@ -62,6 +63,16 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        show();
+    }
+
+    public void show(){
+        loadingPage.show();
     }
 
 }

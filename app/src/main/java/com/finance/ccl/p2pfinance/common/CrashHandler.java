@@ -31,7 +31,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
      * **/
     @Override
     public void uncaughtException(Thread thread, Throwable throwable) {
-//        LogUtils.logshow("chencl_",getClass());
+         LogUtils.logshow("chencl_ " + throwable ,getClass());
         if (isHandle(throwable))  {
             handlerException(throwable);
         } else {

@@ -16,6 +16,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public abstract class LoadingPage extends FrameLayout {
+    private  Context mContext =null;
     AsyncHttpClient client = new AsyncHttpClient();
     private static final int PAGE_LOADING_STATE =1 ;
     private static final int PAGE_ERROR_STATE =2 ;
@@ -41,7 +42,7 @@ public abstract class LoadingPage extends FrameLayout {
 
     public LoadingPage(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        
+        this.mContext =context;
         init();
     }
 
@@ -76,7 +77,7 @@ public abstract class LoadingPage extends FrameLayout {
         errorView.setVisibility(PAGE_CURRENT_STATE == PAGE_ERROR_STATE ? VISIBLE: GONE);
         emptyView.setVisibility(PAGE_CURRENT_STATE == PAGE_EMPTY_STATE ? VISIBLE: GONE);
         if (successView == null) {
-            successView = UIutils.getXmlView(layoutId());
+            successView = View.inflate(mContext,layoutId(),null);
             addView(successView,lp);
         }
         successView.setVisibility(PAGE_CURRENT_STATE == PAGE_SUCCESS_STATE ? VISIBLE: GONE);
