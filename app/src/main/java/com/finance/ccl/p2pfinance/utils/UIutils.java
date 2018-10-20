@@ -2,9 +2,7 @@ package com.finance.ccl.p2pfinance.utils;
 
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
-
 
 import com.finance.ccl.p2pfinance.common.MyApplication;
 

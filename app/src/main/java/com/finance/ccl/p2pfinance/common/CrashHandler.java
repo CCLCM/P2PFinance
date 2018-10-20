@@ -6,7 +6,6 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.finance.ccl.p2pfinance.utils.LogUtils;
-import com.finance.ccl.p2pfinance.utils.UIutils;
 
 import java.lang.Thread.UncaughtExceptionHandler;
 
