@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:textColor="@android:color/holo_red_dark"
-        android:text="热门界面"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+   <com.finance.ccl.p2pfinance.ui.FlowLayout
+       android:background="@android:color/holo_green_light"
+       android:id="@+id/flow"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+   </com.finance.ccl.p2pfinance.ui.FlowLayout>
 
 </LinearLayout>

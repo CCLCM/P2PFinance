@@ -79,8 +79,6 @@ public class ProductRecommendFragment extends Fragment {
 
         @Override
         public View getView(int group, final int position, View convertView) {
-
-
             TextView tv = new TextView(getActivity());
             int r = random.nextInt(210);
             final int g =random.nextInt(210);
@@ -103,7 +101,6 @@ public class ProductRecommendFragment extends Fragment {
 
         @Override
         public int getNextGroupOnPan(int group, float degree) {
-
             return 0;
         }
 
