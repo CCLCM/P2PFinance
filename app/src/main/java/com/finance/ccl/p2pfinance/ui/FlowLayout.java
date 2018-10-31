@@ -23,21 +23,59 @@ public class FlowLayout extends ViewGroup {
     }
 
 
+    private List<List<View>> allViews = new ArrayList<>();
+    private List<Integer> allHeights = new ArrayList<>();
+
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
 
         int width = getWidth();
         int cCount = getChildCount();
+
+        int lineWidth = 0;
+        int lineHeight = 0;
+
+        List<View> linviews = new ArrayList<>();
+
         for (int i =0; i <cCount; i++){
             View child = getChildAt(i);
+            int childWidth = child.getMeasuredWidth();
+            int childHeight = child.getMeasuredHeight();
+            MarginLayoutParams mp = (MarginLayoutParams) child.getLayoutParams();
+            if (lineWidth + childWidth + mp.leftMargin+mp.rightMargin > width) {
+                allViews.add(linviews);
+                allHeights.add(lineHeight);
+                linviews = new ArrayList<>();
+                lineHeight = childHeight + mp.topMargin + mp.bottomMargin;
+                lineWidth = 0;
+            }
+            lineWidth += childWidth + mp.leftMargin + mp.rightMargin;
+            lineHeight = Math.max(lineHeight,childHeight+mp.topMargin+mp.bottomMargin);
+            linviews.add(child);
+            if (i == cCount -1){
+                allViews.add(linviews);
+                allHeights.add(lineHeight);
+            }
+
+        }
+
+        int left = 0;
+        int top = 0;
+
+        for (int i = 0; i < allViews.size(); i++) {
+            int curLineHeight = allHeights.get(i);
+            List<View>  views = allViews.get(i);
+            for (View view : views) {
+
+                int viewWidth = view.getMeasuredWidth();
+                int viewHeight = view.getMeasuredHeight();
+                MarginLayoutParams mp = (MarginLayoutParams) view.getLayoutParams();
+            }
         }
 
 
     }
-
-    private List<List<View>> allViews = new ArrayList<>();
-    private List<Integer> allHeights = new ArrayList<>();
-
 
 
     @Override
