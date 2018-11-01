@@ -5,6 +5,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.finance.ccl.p2pfinance.utils.LogUtils;
+
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,8 @@ public class FlowLayout extends ViewGroup {
                 allViews.add(linviews);
                 allHeights.add(lineHeight);
                 linviews = new ArrayList<>();
-                lineHeight = childHeight + mp.topMargin + mp.bottomMargin;
                 lineWidth = 0;
+                lineHeight = childHeight + mp.topMargin + mp.bottomMargin;
             }
             lineWidth += childWidth + mp.leftMargin + mp.rightMargin;
             lineHeight = Math.max(lineHeight,childHeight+mp.topMargin+mp.bottomMargin);
@@ -67,14 +69,19 @@ public class FlowLayout extends ViewGroup {
             int curLineHeight = allHeights.get(i);
             List<View>  views = allViews.get(i);
             for (View view : views) {
-
                 int viewWidth = view.getMeasuredWidth();
                 int viewHeight = view.getMeasuredHeight();
                 MarginLayoutParams mp = (MarginLayoutParams) view.getLayoutParams();
+                int lc = left + mp.leftMargin;
+                int tc = top + mp.topMargin;
+                int bc = tc + viewHeight;
+                int rc = lc + viewWidth;
+                view.layout(lc,tc,rc,bc);
+                left += viewWidth + mp.rightMargin + mp.leftMargin;
             }
+            left =0;
+            top += curLineHeight;
         }
-
-
     }
 
 
@@ -88,9 +95,8 @@ public class FlowLayout extends ViewGroup {
         int height = 0;
         int linWidth = 0;
         int linHeight = 0;
-        
-        //求取at_most模式下的宽高值
 
+        //求取at_most模式下的宽高值
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             View childAt = getChildAt(i);
@@ -98,7 +104,7 @@ public class FlowLayout extends ViewGroup {
             int childWidth = childAt.getMeasuredWidth();
             int childHeight = childAt.getMeasuredHeight();
             MarginLayoutParams mp = (MarginLayoutParams) childAt.getLayoutParams();
-            if (childWidth + mp.leftMargin + mp.rightMargin > widthSize) {
+            if (childWidth+linWidth + mp.leftMargin + mp.rightMargin > widthSize) {
                 //换行 宽度就需要对比获得
                 width = Math.max(width,linWidth);
                 height += linHeight;
@@ -106,8 +112,8 @@ public class FlowLayout extends ViewGroup {
                 linHeight = childHeight + mp.topMargin + mp.bottomMargin;
             } else {
                 //不换行 高度对比获得
-                linWidth =+ childWidth + mp.leftMargin + mp.rightMargin;
-                linHeight = Math.max(linHeight,childWidth+mp.topMargin+mp.bottomMargin);
+                linWidth += childWidth + mp.leftMargin + mp.rightMargin;
+                linHeight = Math.max(linHeight,childHeight + mp.topMargin + mp.bottomMargin);
             }
             //最后一个需要再计算一次
             if (i == childCount-1){
