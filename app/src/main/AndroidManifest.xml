@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LogInActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.LogInActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.UserInfoActivity"></activity>
     </application>
 
 </manifest>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.finance.ccl.p2pfinance.R;
 import com.finance.ccl.p2pfinance.activity.LogInActivity;
+import com.finance.ccl.p2pfinance.activity.UserInfoActivity;
 import com.finance.ccl.p2pfinance.bean.Login;
 import com.finance.ccl.p2pfinance.common.AppNetConfig;
 import com.finance.ccl.p2pfinance.common.BaseActivity;
@@ -29,6 +30,7 @@ import com.squareup.picasso.Transformation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -78,7 +80,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void initData(String resultState) {
 
-        isLogin();
+       // isLogin();
 
 
     }
@@ -132,8 +134,8 @@ public class MeFragment extends BaseFragment {
     @Override
     public void initTitle() {
         titleTv.setText("我的资产");
-        titleRight.setVisibility(View.INVISIBLE);
-        titleRight.setVisibility(View.INVISIBLE);
+        titleRight.setVisibility(View.VISIBLE);
+        titleLeft.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -147,6 +149,11 @@ public class MeFragment extends BaseFragment {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    @OnClick(R.id.title_right)
+    public void clickUserSetting(View view){
+        ((BaseActivity)getActivity()).gotoActivity(UserInfoActivity.class,null);
     }
 
 }
