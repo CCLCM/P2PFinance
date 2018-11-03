@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.finance.ccl.p2pfinance.common.AppManager;
+import com.finance.ccl.p2pfinance.common.BaseActivity;
 import com.finance.ccl.p2pfinance.fragment.HomeFragment;
 import com.finance.ccl.p2pfinance.fragment.MeFragment;
 import com.finance.ccl.p2pfinance.fragment.MoreFragment;
@@ -23,7 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends BaseActivity {
     @BindView(R.id.content)
     FrameLayout content;
     @BindView(R.id.iv_home)
@@ -57,16 +59,18 @@ public class MainActivity extends FragmentActivity {
     private FragmentTransaction ft;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initData();
-        LogUtils.logshow("onCreate", getClass());
+    protected void initData() {
+        setSelect(0);
     }
 
-    private void initData() {
-        setSelect(0);
+    @Override
+    protected void initTitle() {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_main;
     }
 
     @OnClick({R.id.ll_home, R.id.ll_touzi, R.id.ll_me, R.id.ll_more})
@@ -91,6 +95,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void setSelect(int i) {
+        LogUtils.logshow("chencl_   setSelect  ",getClass());
         FragmentManager fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
         hideFragment();

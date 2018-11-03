@@ -53,7 +53,7 @@ public class AppManager {
     }
 
 
-    public void removeCurrent(Activity activity) {
+    public void removeCurrent() {
       Activity lastElement = activityStack.lastElement();
       lastElement.finish();
       activityStack.remove(lastElement);

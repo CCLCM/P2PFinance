@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Process;
 
+import com.finance.ccl.p2pfinance.utils.LogUtils;
+
 
 /**
  * Created by ccl on 18-4-10.

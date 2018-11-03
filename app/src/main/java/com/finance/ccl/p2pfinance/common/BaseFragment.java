@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.finance.ccl.p2pfinance.ui.LoadingPage;
+import com.finance.ccl.p2pfinance.utils.LogUtils;
 import com.loopj.android.http.RequestParams;
 
 import butterknife.ButterKnife;
@@ -44,6 +45,7 @@ public abstract class BaseFragment extends Fragment {
             }
 
         };
+        LogUtils.logshow("chencl_   loadingPage  ",getClass());
         return loadingPage;
 
     }
