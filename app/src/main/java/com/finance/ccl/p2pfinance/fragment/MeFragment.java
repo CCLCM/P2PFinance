@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -16,10 +17,15 @@ import android.widget.Toast;
 
 import com.finance.ccl.p2pfinance.R;
 import com.finance.ccl.p2pfinance.activity.LogInActivity;
+import com.finance.ccl.p2pfinance.bean.Login;
 import com.finance.ccl.p2pfinance.common.AppNetConfig;
 import com.finance.ccl.p2pfinance.common.BaseActivity;
 import com.finance.ccl.p2pfinance.common.BaseFragment;
+import com.finance.ccl.p2pfinance.utils.BitMapUtils;
+import com.finance.ccl.p2pfinance.utils.UIutils;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,10 +88,28 @@ public class MeFragment extends BaseFragment {
         String uf_acc = sp.getString("UF_ACC","");
         if (TextUtils.isEmpty(uf_acc)) {
             showLoginDialog();
-
         } else {
-
+            doUser();
         }
+    }
+
+    private void doUser() {
+        Login login = ((BaseActivity) getActivity()).getLogin();
+        textView11.setText(login.UF_ACC);
+        Picasso.get().load(login.UF_AVATAR_URL).transform(new Transformation() {
+            @Override
+            public Bitmap transform(Bitmap source) {
+                Bitmap zoom = BitMapUtils.zoom(source, UIutils.dp2px(62), UIutils.dp2px(62));
+                Bitmap bitmap = BitMapUtils.circleBitMap(zoom);
+                source.recycle();
+                return bitmap;
+            }
+
+            @Override
+            public String key() {
+                return "";
+            }
+        }).into(imageView1);
     }
 
     private void showLoginDialog() {
