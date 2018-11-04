@@ -58,4 +58,14 @@ public abstract class BaseActivity extends FragmentActivity {
         }
         startActivity(it);
     }
+
+    public void loginOut(){
+        getSharedPreferences("user_info",MODE_PRIVATE).edit().clear().commit();
+        AppManager.getInstance().removeAll();
+    }
+
+
+    public void closeCurrent(){
+        AppManager.getInstance().removeCurrent();
+    }
 }

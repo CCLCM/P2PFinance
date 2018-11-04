@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.finance.ccl.p2pfinance.MainActivity;
 import com.finance.ccl.p2pfinance.R;
 import com.finance.ccl.p2pfinance.common.AppManager;
 import com.finance.ccl.p2pfinance.common.BaseActivity;
@@ -67,9 +68,15 @@ public class UserInfoActivity extends BaseActivity {
         closeCurrent();
     }
 
-    public void closeCurrent(){
-        AppManager.getInstance().removeCurrent();
+
+    @OnClick(R.id.loginOut)
+    public void loginOut(View view) {
+            loginOut();
+            gotoActivity(MainActivity.class,null);
     }
+
+
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_userinfo;

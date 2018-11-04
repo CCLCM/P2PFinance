@@ -16,7 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.finance.ccl.p2pfinance.R;
+import com.finance.ccl.p2pfinance.activity.ChongzhiActivity;
 import com.finance.ccl.p2pfinance.activity.LogInActivity;
+import com.finance.ccl.p2pfinance.activity.TiXianActivity;
 import com.finance.ccl.p2pfinance.activity.UserInfoActivity;
 import com.finance.ccl.p2pfinance.bean.Login;
 import com.finance.ccl.p2pfinance.common.AppNetConfig;
@@ -79,10 +81,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     public void initData(String resultState) {
-
-       // isLogin();
-
-
+        isLogin();
     }
 
     private void isLogin() {
@@ -136,6 +135,16 @@ public class MeFragment extends BaseFragment {
         titleTv.setText("我的资产");
         titleRight.setVisibility(View.VISIBLE);
         titleLeft.setVisibility(View.INVISIBLE);
+    }
+
+    @OnClick(R.id.chongzhi)
+    public void chongzhiClick(View v){
+        ((BaseActivity)getActivity()).gotoActivity(ChongzhiActivity.class,null);
+
+    }
+    @OnClick(R.id.tixian)
+    public void tixianClick(View v){
+        ((BaseActivity)getActivity()).gotoActivity(TiXianActivity.class,null);
     }
 
     @Override

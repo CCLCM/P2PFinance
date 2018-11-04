@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.finance.ccl.p2pfinance">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
         android:name=".common.MyApplication"
         android:allowBackup="true"
@@ -20,6 +25,21 @@
         </activity>
         <activity android:name="com.finance.ccl.p2pfinance.activity.LogInActivity"></activity>
         <activity android:name="com.finance.ccl.p2pfinance.activity.UserInfoActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.ChongzhiActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.TiXianActivity"></activity>
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
     </application>
 
 </manifest>

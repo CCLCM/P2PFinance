@@ -95,6 +95,8 @@ public class LogInActivity extends BaseActivity {
         titleTv.setText("用户登录");
         titleLeft.setVisibility(View.VISIBLE);
         titleRight.setVisibility(View.INVISIBLE);
+        logEdMob.setText("18651607742");
+        logEdPad.setText("123456");
     }
 
     @Override
@@ -107,9 +109,6 @@ public class LogInActivity extends BaseActivity {
         closeCurrent();
     }
 
-    public void closeCurrent(){
-        AppManager.getInstance().removeCurrent();
-    }
 
 
 }
