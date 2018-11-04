@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.finance.ccl.p2pfinance.R;
 import com.finance.ccl.p2pfinance.common.BaseActivity;
@@ -56,6 +57,14 @@ public class TiXianActivity extends BaseActivity {
     public void back(View v){
         closeCurrent();
     }
+
+
+    @OnClick(R.id.btn_tixian)
+    public void toxian(View v){
+        Toast.makeText(getApplication(),"成功提取"+inputMoney.getText().toString()+"元",Toast.LENGTH_LONG).show();
+    }
+
+
 
     @Override
     public int getLayoutId() {
