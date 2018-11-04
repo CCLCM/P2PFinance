@@ -28,6 +28,8 @@
         <activity android:name="com.finance.ccl.p2pfinance.activity.ChongzhiActivity"></activity>
         <activity android:name="com.finance.ccl.p2pfinance.activity.TiXianActivity"></activity>
         <activity android:name="com.finance.ccl.p2pfinance.activity.LineChartActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.BarChartActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.PieChartActivity"></activity>
 
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"

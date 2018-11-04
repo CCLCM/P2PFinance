@@ -16,9 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.finance.ccl.p2pfinance.R;
+import com.finance.ccl.p2pfinance.activity.BarChartActivity;
 import com.finance.ccl.p2pfinance.activity.ChongzhiActivity;
 import com.finance.ccl.p2pfinance.activity.LineChartActivity;
 import com.finance.ccl.p2pfinance.activity.LogInActivity;
+import com.finance.ccl.p2pfinance.activity.PieChartActivity;
 import com.finance.ccl.p2pfinance.activity.TiXianActivity;
 import com.finance.ccl.p2pfinance.activity.UserInfoActivity;
 import com.finance.ccl.p2pfinance.bean.Login;
@@ -169,6 +171,14 @@ public class MeFragment extends BaseFragment {
     @OnClick(R.id.ll_touzi)
     public void clickline(View view){
         ((BaseActivity)getActivity()).gotoActivity(LineChartActivity.class,null);
+    }
+    @OnClick(R.id.ll_touzi_zhiguan)
+    public void  clickbar(View view){
+        ((BaseActivity)getActivity()).gotoActivity(BarChartActivity.class,null);
+    }
+    @OnClick(R.id.ll_zichang)
+    public void  clickpie(View view){
+        ((BaseActivity)getActivity()).gotoActivity(PieChartActivity.class,null);
     }
 
 }

@@ -106,7 +106,7 @@ public class LineChartActivity extends BaseActivity {
     protected void initTitle() {
         titleLeft.setVisibility(View.VISIBLE);
         titleRight.setVisibility(View.INVISIBLE);
-        titleTv.setText("折线图示例");
+        titleTv.setText("折线图");
 
     }
 
