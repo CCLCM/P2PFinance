@@ -22,6 +22,7 @@ import com.finance.ccl.p2pfinance.activity.LineChartActivity;
 import com.finance.ccl.p2pfinance.activity.LogInActivity;
 import com.finance.ccl.p2pfinance.activity.PieChartActivity;
 import com.finance.ccl.p2pfinance.activity.TiXianActivity;
+import com.finance.ccl.p2pfinance.activity.ToggleActivity;
 import com.finance.ccl.p2pfinance.activity.UserInfoActivity;
 import com.finance.ccl.p2pfinance.bean.Login;
 import com.finance.ccl.p2pfinance.common.AppNetConfig;
@@ -179,6 +180,11 @@ public class MeFragment extends BaseFragment {
     @OnClick(R.id.ll_zichang)
     public void  clickpie(View view){
         ((BaseActivity)getActivity()).gotoActivity(PieChartActivity.class,null);
+    }
+
+    @OnClick(R.id.ll_zhanquan)
+    public void  zhanquan(View view){
+        ((BaseActivity)getActivity()).gotoActivity(ToggleActivity.class,null);
     }
 
 }

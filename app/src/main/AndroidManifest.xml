@@ -30,6 +30,7 @@
         <activity android:name="com.finance.ccl.p2pfinance.activity.LineChartActivity"></activity>
         <activity android:name="com.finance.ccl.p2pfinance.activity.BarChartActivity"></activity>
         <activity android:name="com.finance.ccl.p2pfinance.activity.PieChartActivity"></activity>
+        <activity android:name="com.finance.ccl.p2pfinance.activity.ToggleActivity"></activity>
 
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
